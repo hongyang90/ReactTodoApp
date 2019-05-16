@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Todos from './Components/Todos';
 import Header from './Components/Layout/Header';
+import AddTodo from './Components/AddTodo';
 
 class App extends Component {
   constructor (props) {
@@ -40,14 +41,22 @@ class App extends Component {
     this.setState({
       todos: this.state.todos.filter(todo => todo.id !== id)
     })
+  };
+
+  addTodo = (title) => {
+    
   }
 
   render () {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div className="App">
-        <Header/>
-        <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
+        <div className='container'>
+          <Header/>
+          <AddTodo addTodo={this.addTodo}/>
+          <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
+
+        </div>
 
       </div>
     );
